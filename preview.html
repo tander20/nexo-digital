@@ -1,0 +1,977 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="NEXO DIGITAL: desenvolvimento de sites, design digital e apresentações personalizadas.">
+
+<title>NEXO DIGITAL | Soluções Digitais</title>
+
+<style>
+:root {
+  --bg: #090710;
+  --panel: #151020;
+  --panel2: #1d162c;
+  --purple: #9b5cff;
+  --pink: #d16cff;
+  --white: #f7f3ff;
+  --muted: #aaa1bb;
+  --border: #352548;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+header {
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0c0913;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  color: var(--purple);
+}
+
+nav {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+nav a {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+nav a:hover {
+  color: var(--pink);
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 22px;
+  border-radius: 9px;
+  border: 0;
+  cursor: pointer;
+  background: linear-gradient(110deg,#8944ee,#c05cff);
+  color: white;
+  font-weight: bold;
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 25px #9b5cff55;
+}
+
+.btn.secondary {
+  background: var(--panel2);
+  border: 1px solid var(--border);
+}
+
+.hero {
+  text-align: center;
+  padding: 125px 8%;
+  background:
+    radial-gradient(ellipse at 50% 0%,#462071 0%,transparent 65%);
+}
+
+.tag {
+  color: var(--pink);
+  letter-spacing: 3px;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(40px,7vw,76px);
+  line-height: 1.1;
+  margin: 25px 0;
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg,#a66bff,#ec8aff);
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 650px;
+  margin: auto auto 30px;
+}
+
+section {
+  padding: 85px 9%;
+  scroll-margin-top: 85px;
+}
+
+.section-title {
+  font-size: 36px;
+  margin: 12px 0;
+}
+
+.section-description {
+  color: var(--muted);
+  margin-bottom: 35px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--panel);
+  padding: 27px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: .25s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--purple);
+}
+
+.card-icon {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.card small {
+  display: block;
+  color: var(--pink);
+  margin-top: 16px;
+}
+
+.highlight {
+  background: linear-gradient(120deg,#24153b,#151021);
+  padding: 32px;
+  border-radius: 15px;
+  border: 1px solid var(--border);
+  margin-top: 25px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+  gap: 25px;
+}
+
+.number {
+  font-size: 30px;
+  color: var(--pink);
+  font-weight: bold;
+}
+
+.step p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.portfolio-label {
+  color: var(--pink);
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.contact {
+  background: linear-gradient(120deg,#24153b,#100c19);
+}
+
+form {
+  max-width: 650px;
+  display: grid;
+  gap: 14px;
+}
+
+input,textarea,select {
+  background: #100c19;
+  border: 1px solid var(--border);
+  color: white;
+  border-radius: 8px;
+  padding: 14px;
+  width: 100%;
+  font: inherit;
+}
+
+textarea {
+  min-height: 110px;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 16px;
+}
+
+footer {
+  padding: 35px 8%;
+  text-align: center;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+/* CRIADOR DE SLIDES */
+
+.creator {
+  background: #100c19;
+}
+
+.editor {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 440px;
+}
+
+.sidebar {
+  background: #171121;
+  padding: 20px;
+  border-right: 1px solid var(--border);
+}
+
+.sidebar h3 {
+  margin-bottom: 15px;
+}
+
+.slide-list {
+  display: grid;
+  gap: 9px;
+  margin-bottom: 15px;
+}
+
+.slide-item {
+  background: #251a36;
+  padding: 12px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  cursor: pointer;
+  color: white;
+  text-align: left;
+}
+
+.slide-item.active {
+  border-color: var(--purple);
+  background: #38204e;
+}
+
+.workspace {
+  padding: 25px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.toolbar button {
+  padding: 9px 13px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: #21182e;
+  color: white;
+  cursor: pointer;
+}
+
+.toolbar button:hover {
+  border-color: var(--pink);
+}
+
+.slide-preview {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  max-width: 750px;
+  margin: auto;
+  padding: 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(135deg,#281348,#11101d);
+  border: 1px solid #7040a0;
+  overflow: hidden;
+}
+
+.slide-preview h2 {
+  font-size: clamp(20px,4vw,43px);
+  margin-bottom: 20px;
+}
+
+.slide-preview p {
+  color: #d3c5e5;
+  white-space: pre-wrap;
+}
+
+.slide-preview .slide-brand {
+  color: #d49aff;
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-top: 35px;
+}
+
+.editor-fields {
+  max-width: 750px;
+  margin: 22px auto 0;
+  display: grid;
+  gap: 12px;
+}
+
+.editor-fields label {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.editor-fields input,
+.editor-fields textarea {
+  margin-top: 6px;
+}
+
+.editor-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.slide-counter {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media(max-width:750px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 13px;
+  }
+
+  section {
+    padding: 65px 7%;
+  }
+
+  .editor {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .slide-preview {
+    padding: 6%;
+  }
+
+  .hero {
+    padding: 90px 7%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#inicio" class="logo">NEXO<span>.</span> DIGITAL</a>
+
+  <nav>
+    <a href="#servicos">Serviços</a>
+    <a href="#portfolio">Projetos</a>
+    <a href="#slides">Criador de slides</a>
+    <a href="#processo">Processo</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="inicio">
+  <span class="tag">O futuro começa com uma ideia</span>
+
+  <h1>Seu negócio.<br>
+  Sua identidade.<br>
+  <span>Nosso universo digital.</span></h1>
+
+  <p>
+    Desenvolvemos experiências digitais personalizadas
+    para pequenas empresas que desejam apresentar
+    suas ideias de uma maneira moderna.
+  </p>
+
+  <a class="btn" href="#servicos">Explorar soluções →</a>
+</section>
+
+<section id="servicos">
+  <span class="tag">Nossas soluções</span>
+  <h2 class="section-title">Tecnologia para suas ideias.</h2>
+
+  <p class="section-description">
+    Soluções digitais planejadas de acordo com
+    as necessidades de cada projeto.
+  </p>
+
+  <div class="grid">
+    <article class="card">
+      <div class="card-icon">🌐</div>
+      <h3>Desenvolvimento web</h3>
+      <p>Sites institucionais, páginas comerciais e experiências adaptadas para celulares.</p>
+      <small>HTML • CSS • JavaScript</small>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🎨</div>
+      <h3>Design digital</h3>
+      <p>Materiais gráficos e visuais personalizados para fortalecer a comunicação.</p>
+      <small>Identidade • Criatividade</small>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">📊</div>
+      <h3>Apresentações</h3>
+      <p>Slides organizados para apresentar empresas, produtos, serviços e projetos.</p>
+      <small>Comunicação • Apresentação</small>
+    </article>
+  </div>
+</section>
+
+<section id="portfolio">
+  <span class="tag">Nosso universo criativo</span>
+  <h2 class="section-title">Projetos e demonstrações.</h2>
+
+  <p class="section-description">
+    Exemplos conceituais para demonstrar possibilidades
+    de design e desenvolvimento.
+  </p>
+
+  <div class="grid">
+    <article class="card">
+      <div class="portfolio-label">DEMONSTRAÇÃO</div>
+      <div class="card-icon">🍕</div>
+      <h3>Restaurante digital</h3>
+      <p>Exemplo de site para apresentar cardápios e informações de um restaurante.</p>
+    </article>
+
+    <article class="card">
+      <div class="portfolio-label">DEMONSTRAÇÃO</div>
+      <div class="card-icon">🛍️</div>
+      <h3>Loja virtual</h3>
+      <p>Exemplo de interface para apresentação de produtos e serviços.</p>
+    </article>
+
+    <article class="card">
+      <div class="portfolio-label">DEMONSTRAÇÃO</div>
+      <div class="card-icon">🏢</div>
+      <h3>Empresa institucional</h3>
+      <p>Exemplo de página para apresentar uma empresa e sua atuação.</p>
+    </article>
+  </div>
+</section>
+
+<section class="creator" id="slides">
+  <span class="tag">Ferramenta interativa</span>
+  <h2 class="section-title">NEXO SLIDES.</h2>
+
+  <p class="section-description">
+    Crie uma apresentação personalizada diretamente
+    pelo nosso site.
+  </p>
+
+  <div class="editor">
+
+    <aside class="sidebar">
+      <h3>Suas páginas</h3>
+      <div class="slide-list" id="slideList"></div>
+
+      <button class="btn" id="addSlide" style="width:100%">
+        + Novo slide
+      </button>
+
+      <p class="note">
+        Adicione páginas e selecione uma para editar.
+      </p>
+    </aside>
+
+    <div class="workspace">
+
+      <div class="toolbar">
+        <button id="prevSlide">← Anterior</button>
+        <button id="nextSlide">Próximo →</button>
+
+        <select id="theme">
+          <option value="purple">Roxo futurista</option>
+          <option value="blue">Azul profissional</option>
+          <option value="black">Preto minimalista</option>
+        </select>
+      </div>
+
+      <div class="slide-preview" id="preview">
+        <h2 id="previewTitle">Minha apresentação</h2>
+        <p id="previewText">
+          Escreva suas ideias e comece a criar.
+        </p>
+        <span class="slide-brand">NEXO SLIDES</span>
+      </div>
+
+      <div class="editor-fields">
+
+        <label>
+          Título do slide
+          <input id="slideTitle" type="text"
+            placeholder="Digite o título">
+        </label>
+
+        <label>
+          Conteúdo do slide
+          <textarea id="slideText"
+            placeholder="Digite o conteúdo"></textarea>
+        </label>
+
+        <div class="editor-actions">
+          <span class="slide-counter" id="counter"></span>
+          <button class="toolbar" id="deleteSlide"
+            style="background:#411c31;color:white">
+            Excluir slide
+          </button>
+        </div>
+
+        <button class="btn" id="downloadSlides">
+          Baixar apresentação HTML ↓
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <p class="note">
+    O criador funciona localmente no navegador.
+    A apresentação baixada é um arquivo HTML independente.
+  </p>
+</section>
+
+<section id="processo">
+  <span class="tag">Como trabalhamos</span>
+  <h2 class="section-title">Do primeiro contato à entrega.</h2>
+
+  <p class="section-description">
+    Um processo organizado para que cada etapa
+    seja compreendida e aprovada.
+  </p>
+
+  <div class="steps">
+    <article class="step">
+      <div class="number">01</div>
+      <h3>Contato</h3>
+      <p>O cliente apresenta sua ideia e explica o que precisa.</p>
+    </article>
+
+    <article class="step">
+      <div class="number">02</div>
+      <h3>Planejamento</h3>
+      <p>São definidos objetivos, funcionalidades e escopo.</p>
+    </article>
+
+    <article class="step">
+      <div class="number">03</div>
+      <h3>Desenvolvimento</h3>
+      <p>O projeto é construído conforme o planejamento aprovado.</p>
+    </article>
+
+    <article class="step">
+      <div class="number">04</div>
+      <h3>Revisão</h3>
+      <p>O resultado é apresentado para análise e ajustes combinados.</p>
+    </article>
+
+    <article class="step">
+      <div class="number">05</div>
+      <h3>Entrega</h3>
+      <p>Os arquivos e as orientações de utilização são disponibilizados.</p>
+    </article>
+  </div>
+
+  <div class="highlight">
+    <h3>Qual é o prazo?</h3>
+    <p>
+      O tempo depende da complexidade, do conteúdo
+      e das funcionalidades solicitadas.
+      Cada prazo deve ser combinado antes do início.
+    </p>
+    <p class="note">
+      Não existe prazo universal. O planejamento é feito
+      individualmente para cada projeto.
+    </p>
+  </div>
+</section>
+
+<section id="confianca">
+  <span class="tag">Transparência</span>
+  <h2 class="section-title">Projetos com clareza.</h2>
+
+  <div class="grid">
+    <article class="card">
+      <div class="card-icon">🔐</div>
+      <h3>Privacidade</h3>
+      <p>Solicitamos somente informações necessárias. Não envie senhas ou códigos de acesso.</p>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">✨</div>
+      <h3>Personalização</h3>
+      <p>Os projetos são planejados conforme o objetivo e as referências de cada cliente.</p>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🤝</div>
+      <h3>Transparência</h3>
+      <p>Escopo, prazos e entregas devem ser definidos e apresentados com clareza.</p>
+    </article>
+  </div>
+
+  <p class="note">
+    Os exemplos deste site são demonstrativos.
+    Não são apresentados depoimentos, certificações
+    ou garantias de segurança que ainda não foram obtidos.
+  </p>
+</section>
+
+<section class="contact" id="contato">
+  <span class="tag">Vamos conversar</span>
+  <h2 class="section-title">Sua ideia pode ser o próximo projeto.</h2>
+
+  <p class="section-description">
+    Preencha os campos para preparar uma mensagem
+    de contato pelo WhatsApp.
+  </p>
+
+  <form id="contactForm">
+    <input id="name" placeholder="Nome ou empresa" required>
+
+    <select id="service" required>
+      <option value="">Selecione um serviço</option>
+      <option>Desenvolvimento de site</option>
+      <option>Apresentação de slides</option>
+      <option>Design digital</option>
+      <option>Outro projeto</option>
+    </select>
+
+    <textarea id="description"
+      placeholder="Descreva sua ideia..."
+      required></textarea>
+
+    <button class="btn" type="submit">
+      Preparar contato →
+    </button>
+  </form>
+
+  <p class="note">
+    Seus dados não são armazenados pelo site.
+    A mensagem é preparada para revisão antes de abrir o WhatsApp.
+  </p>
+
+  <p class="note">
+    Canal de atendimento: contato administrado pelo responsável.
+  </p>
+</section>
+
+</main>
+
+<footer>
+  <strong>NEXO DIGITAL</strong>
+  <p>Ideias conectadas ao futuro.</p>
+  <p>© 2026 NEXO DIGITAL • Projeto demonstrativo</p>
+</footer>
+
+<script>
+// --------------------------------
+// CONFIGURAÇÃO DE CONTATO
+// --------------------------------
+
+// Configure somente um número de atendimento
+// autorizado e administrado por um responsável.
+
+const WHATSAPP = "55DDDNÚMERO";
+
+// --------------------------------
+// CRIADOR DE SLIDES
+// --------------------------------
+
+let slides = [
+  {
+    title: "Minha apresentação",
+    text: "Apresente suas ideias de uma maneira moderna."
+  },
+  {
+    title: "Sobre o projeto",
+    text: "Explique o objetivo da sua apresentação."
+  }
+];
+
+let current = 0;
+let currentTheme = "purple";
+
+const list = document.getElementById("slideList");
+const titleInput = document.getElementById("slideTitle");
+const textInput = document.getElementById("slideText");
+const previewTitle = document.getElementById("previewTitle");
+const previewText = document.getElementById("previewText");
+const preview = document.getElementById("preview");
+
+function renderSlides() {
+  list.innerHTML = "";
+
+  slides.forEach((slide, index) => {
+    const button = document.createElement("button");
+
+    button.className =
+      "slide-item" + (index === current ? " active" : "");
+
+    button.textContent =
+      (index + 1) + ". " +
+      (slide.title || "Slide sem título");
+
+    button.onclick = () => {
+      current = index;
+      renderSlides();
+    };
+
+    list.appendChild(button);
+  });
+
+  const slide = slides[current];
+
+  titleInput.value = slide.title;
+  textInput.value = slide.text;
+
+  previewTitle.textContent = slide.title;
+  previewText.textContent = slide.text;
+
+  document.getElementById("counter").textContent =
+    "Slide " + (current + 1) + " de " + slides.length;
+
+  preview.style.background = {
+    purple: "linear-gradient(135deg,#281348,#11101d)",
+    blue: "linear-gradient(135deg,#123b6a,#101521)",
+    black: "linear-gradient(135deg,#292929,#080808)"
+  }[currentTheme];
+}
+
+titleInput.addEventListener("input", () => {
+  slides[current].title = titleInput.value;
+  renderSlides();
+});
+
+textInput.addEventListener("input", () => {
+  slides[current].text = textInput.value;
+  renderSlides();
+});
+
+document.getElementById("addSlide").onclick = () => {
+  slides.push({
+    title: "Novo slide",
+    text: "Adicione seu conteúdo aqui."
+  });
+
+  current = slides.length - 1;
+  renderSlides();
+};
+
+document.getElementById("deleteSlide").onclick = () => {
+  if (slides.length === 1) {
+    alert("Sua apresentação precisa ter pelo menos um slide.");
+    return;
+  }
+
+  slides.splice(current, 1);
+  current = Math.min(current, slides.length - 1);
+  renderSlides();
+};
+
+document.getElementById("prevSlide").onclick = () => {
+  current = (current - 1 + slides.length) % slides.length;
+  renderSlides();
+};
+
+document.getElementById("nextSlide").onclick = () => {
+  current = (current + 1) % slides.length;
+  renderSlides();
+};
+
+document.getElementById("theme").onchange = (event) => {
+  currentTheme = event.target.value;
+  renderSlides();
+};
+
+// Exporta uma apresentação HTML independente.
+
+document.getElementById("downloadSlides").onclick = () => {
+
+  const themeColors = {
+    purple: ["#281348","#11101d","#d49aff"],
+    blue: ["#123b6a","#101521","#7dc5ff"],
+    black: ["#292929","#080808","#eeeeee"]
+  };
+
+  const colors = themeColors[currentTheme];
+
+  const pages = slides.map((slide, index) => `
+    <section class="page">
+      <small>NEXO SLIDES • ${index + 1}/${slides.length}</small>
+      <h1>${escapeHTML(slide.title)}</h1>
+      <p>${escapeHTML(slide.text).replace(/\n/g,"<br>")}</p>
+    </section>
+  `).join("");
+
+  const output = `
+  <!DOCTYPE html>
+  <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Minha apresentação</title>
+    <style>
+      *{box-sizing:border-box}
+      body{
+        margin:0;
+        background:#080710;
+        color:white;
+        font-family:Arial,sans-serif;
+      }
+      .page{
+        width:min(100% - 30px,1000px);
+        min-height:550px;
+        margin:35px auto;
+        padding:10%;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        background:linear-gradient(135deg,${colors[0]},${colors[1]});
+        border:1px solid ${colors[2]};
+        border-radius:15px;
+        page-break-after:always;
+      }
+      small{color:${colors[2]};letter-spacing:3px}
+      h1{font-size:clamp(35px,6vw,65px)}
+      p{font-size:clamp(17px,2vw,25px);color:#ddd;line-height:1.8}
+      @media print{
+        body{background:white}
+        .page{width:100%;min-height:100vh;margin:0;border-radius:0}
+      }
+    </style>
+  </head>
+  <body>${pages}</body>
+  </html>`;
+
+  const blob = new Blob([output], {
+    type: "text/html;charset=utf-8"
+  });
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "minha-apresentacao.html";
+  link.click();
+
+  URL.revokeObjectURL(url);
+};
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+renderSlides();
+
+// --------------------------------
+// FORMULÁRIO DE CONTATO
+// --------------------------------
+
+document.getElementById("contactForm")
+.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  if (!/^55\d{10,11}$/.test(WHATSAPP)) {
+    alert("Canal de contato ainda não configurado.");
+    return;
+  }
+
+  const name = document.getElementById("name").value;
+  const service = document.getElementById("service").value;
+  const description =
+    document.getElementById("description").value;
+
+  const message =
+    "Olá! Conheci a NEXO DIGITAL pelo site.\n\n" +
+    "Nome/empresa: " + name + "\n" +
+    "Serviço: " + service + "\n" +
+    "Projeto: " + description;
+
+  const url = "https://wa.me/" + WHATSAPP +
+    "?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
+});
+</script>
+
+</body>
+</html>
